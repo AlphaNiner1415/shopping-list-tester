@@ -16,9 +16,14 @@ class ShoppingList(object):
             print("Plese enter another item!! That item is not available!!")
     def checkOut (self, cart, items, bill):
         for i in cart:
-            if i == "Ham"
+            if i == "Ham":
+                bill += items.get("Ham")
+            if i == "Bacon":
+                bill += items.get("Bacon")
+            if i == "beans":
+                bill += items.get("beans")
 
 ## Items = Ham 20
 ## bacon 40
 ## Beans 30
-items = ["Ham": 20, "Bacon": 40, "beans":30]
+items = {"Ham": 20, "Bacon": 40, "beans":30}
