@@ -11,12 +11,15 @@ class Item:
 
 item1 = Item("Banana",20)
 item2 = Item("Apple",30)
-# print(repr(item1))
+print(item1.getName())
 class Cart:
     def __init__(self, shoppingList):
         self.shoppingList = shoppingList
     def addToCart(self, item):
         self.shoppingList.append(item)
+    ## One way to get the price and name of items
+    ## Here the method returns the object Item at the specified index
+    ##And that Item instance returns itself through the __repr__ function.
     def getItem(self,index):
         return self.shoppingList[index-1]
     def getPrice(self):
@@ -25,11 +28,15 @@ class Cart:
             price = item.getPrice()
             total += price
         return total
-
+    def getCart(self):
+        ItemInCart = ""
+        for item in self.shoppingList:
+            ItemInCart = ItemInCart +" "+ item.getName()
+        return ItemInCart
 myCart = Cart([])
 
 myCart.addToCart(item1)
 myCart.addToCart(item2)
 print(myCart.getPrice())
-print("Here is your cart",myCart.getItem(2))
+print(myCart.getCart())
 #print(repr(myCart))
