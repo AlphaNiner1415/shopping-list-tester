@@ -1,44 +1,35 @@
-items2 ={}
-items2['ham'] =20
-items2['bacon'] = 40
-items2['beans'] = 20
-print(items2)
-class ShoppingList(object):
-    def __init__(self, customerName, items, cart,bill):
-        self.customerName = customerName
-        self.items = items
-        self.cart = cart
-        cart = {}
-        self.bill = bill
-    def addToCart (self, items, cart, userinp):
-        
-        if user_choice not in items:
-            print("Plese enter another item!! That item is not available!!")
-            return cart, items
-        else:
-            print(items[userinp])
-            cart.update(items[userinp])
-            print(cart)
-            items.pop(userinp)
-            print("That item has been added to your cart!")
-            return cart, items
-        print(cart)
-    def checkOut (self, cart, items, bill):
-        for i in cart:
-            if i == "ham":
-                bill += items.get('ham')
-            if i == "bacon":
-                bill += items.get('bacon')
-            if i == "beans":
-                bill += items.get('beans')
-        print("Here is your total bill: $",bill)
-bobList = ShoppingList("Bob",items2,{},0)
-bobList.items = items2
-user_choice = input("Enter which items you'd like to add to your cart ")
-bobList.addToCart(items2,bobList.cart,user_choice)
-print(bobList.cart)
-bobList.checkOut(bobList.cart,bobList.items, bobList.bill)
+class Item:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+    def getPrice(self):
+        return self.price
+    def getName(self):
+        return self.name
+    def __repr__(self):
+        return '{name:'+self.name+', price:'+str(self.price)+ '}'
 
-## Items = Ham 20
-## bacon 40
-## Beans 30
+item1 = Item("Banana",20)
+item2 = Item("Apple",30)
+# print(repr(item1))
+class Cart:
+    def __init__(self, shoppingList):
+        self.shoppingList = shoppingList
+    def addToCart(self, item):
+        self.shoppingList.append(item)
+    def getItem(self,index):
+        return self.shoppingList[index-1]
+    def getPrice(self):
+        total = 0
+        for item in self.shoppingList:
+            price = item.getPrice()
+            total += price
+        return total
+
+myCart = Cart([])
+
+myCart.addToCart(item1)
+myCart.addToCart(item2)
+print(myCart.getPrice())
+print("Here is your cart",myCart.getItem(2))
+#print(repr(myCart))
