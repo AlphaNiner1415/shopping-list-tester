@@ -1,0 +1,47 @@
+import random
+import time
+class Player(object):
+    def __init__(self, att, hp, defe, spd, exp, lvl, skillpt):
+        self.att = att
+        self.hp = hp
+        self.defe = defe
+        self.spd = spd
+        self.exp = exp
+        self.lvl = lvl
+        self.skillpt = skillpt
+        # self.turncounter = turncounter
+
+    def levelUp(self):
+        self.lvl += 1
+        self.exp = 0
+        self.skillpt += round(5* (self.lvl* 0.5))
+
+    def modSkill(self,userinput):
+        pass
+        # while self.skillpt != 0:
+        #     userinput = input("What would you like to improve? ")
+        #     if userinput == "att":
+
+    def attack(self,opponent):
+        if self.att == opponent.defe:
+            return 2
+        else:
+            return self.att - opponent.defe
+
+john = Player(10,50,10,5,0,1,0)
+Sarah = Player(10,50,5,5,0,1,0)
+gameOver = 0
+def battleFunction(player1, player2,gameover):
+
+    print("Let the battle commence!")
+    while gameover == 0:
+        if player1.spd >= player2.spd:
+            player2.hp -= player1.attack(player2)
+            player1.hp -= player2.attack(player1)
+        else:
+            player1.hp -= player2.attack(player1)
+            player2.hp -= player1.attack(player2)
+
+        if player1.hp == 0 or (player2.hp == 0):
+            gameover = 1
+battleFunction(john,Sarah,gameOver)
