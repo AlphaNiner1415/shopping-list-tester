@@ -1,5 +1,5 @@
 import random
-import time
+from time import sleep
 class Player(object):
     def __init__(self, name, att, hp, defe, spd, exp, lvl, skillpt):
         self.name = name
@@ -25,14 +25,13 @@ class Player(object):
         #     if userinput == "att":
 
     def attack(self,opponent):
-        print(self.name + " attacks")
         if self.att == opponent.defe:
             return 2
         else:
             return self.att - opponent.defe
     def isDamaged(self, damage):
         self.hp -= damage
-        return self.hp
+        return self.hp, damage
     def isDefeated(self):
         if self.hp == 0:
             self.gameover = 1
@@ -43,6 +42,7 @@ class Player(object):
 
 Monster = Player("The Monster",10,50,5,5,0,1,0)
 gameOver = 0
+myPlayer = Player("name",10,50,5,10,0,1,0)
 def battleFunction(player1, player2,gameover):
 
     print("Let the battle commence!")
@@ -53,18 +53,28 @@ def battleFunction(player1, player2,gameover):
             sleep(1)
             print("You attack!")
             print("The monster have "+ str(player2.isDamaged(player1.attack(player2)))+" Hp left")
+
+            sleep(1)
+            print("It is the monster's turn")
+            sleep(1)
+            print("The monster attacks!")
+            print("You have "+ str(player1.isDamaged(player2.attack(player1)))+" Hp left")
         else:
             print("It is the monster's turn")
             sleep(1)
             print("The monster attacks!")
             print("You have "+ str(player1.isDamaged(player2.attack(player1)))+" Hp left")
+
+            sleep(1)
+            print("It is your turn!")
+            sleep(1)
+            print("You attack!")
+            print("The monster have "+ str(player2.isDamaged(player1.attack(player2)))+" Hp left")
+
         if (player1.isDefeated()):
             print("Monster wins!")
             gameover = 1
         elif (player2.isDefeated()):
             print("You win!")
             gameover = 1
-
-userinput = str(input("What is your name? "))
-myPlayer = (userinput,10,50,5,5,0,1,0)
 battleFunction(myPlayer,Monster,gameOver)
