@@ -46,7 +46,7 @@ myPlayer = Player("name",10,50,5,10,0,1,0)
 def battleFunction(player1, player2,gameover):
 
     print("Let the battle commence!")
-    while gameover == 0:
+    while gameOver == 0:
         print("...")
         if player1.spd >= player2.spd:
             print("It is your turn!")
