@@ -21,24 +21,25 @@ class Cart:
         self.shoppingList = shoppingList
 
     def addToCart(self, item):
-        print(self.checkIfIn(item))
-        print("ADDING " + item.getName() + " to your cart.")
-        self.shoppingList.append(item)
+        willAdd = not (self.checkIfIn(item))
+        print(willAdd)
+        if willAdd == True:
+            print("ADDING " + item.getName() + " to your cart.")
+            self.shoppingList.append(item)
+        elif willAdd == False:
+            print("ERROR! UNABLE to add item to cart.")
 
     def checkIfIn(self,item):
-        temp = False
+        isIn = False
         for i in self.shoppingList:
 
             if i.getName() == item.getName():
                 print("Items already in your cart: " + item.getName())
-                temp = True
+                isIn = True
             else:
                 print("Nope")
-                temp = False
-        if temp:
-            return temp #Item really is in the cart
-        else:
-            return temp  # item not in cart.
+                isIn = False
+        return isIn
 
 
 
@@ -68,9 +69,8 @@ class Cart:
 myCart = Cart([])
 myCart.addToCart(item1)
 print("___________________________________________________________________________________________________________________________________")
-myCart.checkIfIn(item1)
 myCart.addToCart(item2)
-myCart.checkIfIn(item2)
+
 myCart.getCartList()
 print(myCart.getPrice())
 
