@@ -13,7 +13,7 @@ class Player(object):
         self.gameover = 0
         # self.turncounter = turncounter
 
-    def levelUp(self):
+    def levelUp(self): 
         self.lvl += 1
         self.exp = 0
         self.skillpt += round(5* (self.lvl* 0.5))
