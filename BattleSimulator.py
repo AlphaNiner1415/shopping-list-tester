@@ -54,7 +54,7 @@ def battleFunction(player1, player2,gameover,temp):
             print("You attack!")
             print("The monster have "+ str(player2.isDamaged(player1.attack(player2)))+" Hp left")
             temp = "monster"
-        elif temp == "monster":
+        elif temp == "monster": 
             print("It is the monster's turn")
             sleep(1)
             print("The monster attacks!")
