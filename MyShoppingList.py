@@ -3,12 +3,16 @@ class Item(object):
         self.unique_id = unique_id
         self.name = name
         self.price = price
+
     def getPrice(self):
         return self.price
+
     def getName(self):
         return self.name
+
     def getId(self):
         return self.unique_id
+
     def __eq__(self, other):
         myName = self.name
         hisName = other.name
@@ -85,6 +89,8 @@ mallStand = Cart([Apple,Banana, Cherries])
 
 print("WELCOME TO THE SHOPPING MALL!!!!!! THE MALL STAND CONTAINS")
 print(mallStand.getCart())
+
+
 
 
 

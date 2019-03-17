@@ -1,19 +1,20 @@
 import java.util.ArrayList;
 public class Cart{
-  public ArrayList shoppingList = new ArrayList();
-  private boolean isIn = false;
+  ArrayList<String> items;
+  double total;
+  // private boolean isIn = false;
 
   public Cart(){
-    shoppingList.add("");
+    items = new ArrayList<String>();
   }
-  public void addToCart(ArrayList item){
-    shoppingList.add(item);
-    System.out.println(shoppingList);
+  public void addToCart(String item){
+    items.add(item);
   }
-  // public boolean checkIfIn(ArrayList shoppingList, item, boolean isIn){
-  //   for(int i = 0; i< shoppingList.size();i++){
-  //     if(item.unique_id ==
-  //   }
-  //   return isIn;
-  // }
+  public void getNumberofItems(){
+    System.out.println(items.size());
+  }
+  public void removeFromCart(String item){
+    items.remove(item);
+  }
+  
 }
