@@ -8,14 +8,21 @@ public class Cart{
     items.clear();
     this.total = 0;
   }
+  public Cart(ArrayList<Item> a, double t){
+    items = a;
+    total = t;
+  }
   public void addToCart(Item myItem){
-    this.items.add(new Item(myItem.name, myItem.unique_id, myItem.price));
+    this.items.add(myItem);
+    total += myItem.getPrice();
   }
   public void getNumberofItems(){
     System.out.println(items.size());
   }
   public void printCart(){
-    System.out.println();
+    for(Item a : items){
+      System.out.println(a.toString());
+    }
   }
   public double getTotal(){
     return total;
@@ -26,6 +33,7 @@ public class Cart{
   public void removeFromCart(Item myItem){
 
     items.remove(items.indexOf(myItem));
+    total -= myItem.getPrice();
   }
   
 }
