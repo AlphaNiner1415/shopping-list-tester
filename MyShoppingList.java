@@ -4,5 +4,6 @@ public class MyShoppingList{
     Item Banana = new Item("Banana",1,40.0);
     myCart.addToCart(Banana);
     myCart.printCart();
+    System.out.println(myCart.getTotal());
   }
 }
